@@ -1,3 +1,4 @@
+const { response } = require("express");
 const Job = require("../model/jobs")
 
 
@@ -9,14 +10,32 @@ const createJob = async (jobdata)=>{
         const savedJob = await newJob.save();
         return savedJob;
     } catch (error) {
-        return response.status(500).json({error: error.message})
+        throw new Error(error.message);
+    }
+}
+
+const getJob = async ()=>{
+    try {
+        const alljob = await Job.find()
+        return alljob
+    } catch (error) {
+        throw new Error(error.message)
+    }
+}
+
+const getjobId = async(id)=>{
+    try {
+        const getjobid = await Job.findById(id)
+        return getjobid
+    } catch (error) {
+        throw new Error(error.message)
     }
 }
 
 
 
 module.exports ={
-    createJob
+    createJob,getJob,getjobId
 }
 
 

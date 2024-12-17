@@ -20,6 +20,40 @@ const pJob = async(request,response)=>{
      
 }
 
+const getall = async (request,response)=>{
+    try {
+        const alljobs = await jobService.getJob()
+        return response.status(200).json({success:true, alljobs:alljobs})
+    } catch (error) {
+        return response.status(500).json({ success: false, message: error.message });
+    }
+}
 
+const getId = async(request,response)=>{
+    try {
+        const {id} = request.params
+    if(!id){
+        return response.status(400).json({
+            success:false,
+            message:"Not Found"
+        })
+    }
+    const job = await jobService.getjobId(id)
+    if (!job) {
+        return response.status(404).json({
+            success: false,
+            message: "Job not found",
+        });
+    }
+    return response.status(200).json({success:true, job})
+    } catch (error) {
+        return response.status(500).json({ success: false, message: error.message });
+    }
+    
+}
 
-module.exports = pJob
+module.exports = {
+    pJob,
+    getall,
+    getId
+}

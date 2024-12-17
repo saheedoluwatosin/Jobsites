@@ -26,3 +26,10 @@ app.listen(PORT,()=>{
 
 
 app.use("/v1/api",router)
+
+app.use((req, res, next) => {
+    res.status(404).json({
+        success: false,
+        message: "Endpoint does not exist",
+    });
+});

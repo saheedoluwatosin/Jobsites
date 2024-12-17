@@ -1,12 +1,14 @@
 const express = require("express")
-const pJob = require("../controller/control")
+const { pJob, getall, getId } = require("../controller/control")
+
 
 
 const router = express.Router()
 
 
 router.post("/postjob",pJob)
-
+router.get("/alljobs",getall)
+router.get("/get/:id",getId)
 
 
 
