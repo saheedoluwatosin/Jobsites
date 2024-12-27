@@ -10,7 +10,8 @@ const jobdata = {
     company,
     location,
     salary,
-    jobType
+    jobType,
+    joblinks
 }
 
 module.exports = jobdata
