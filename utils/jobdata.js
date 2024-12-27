@@ -11,7 +11,7 @@ const jobdata = {
     location,
     salary,
     jobType,
-    joblinks
+    joblink
 }
 
 module.exports = jobdata
