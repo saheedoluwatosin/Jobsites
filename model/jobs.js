@@ -8,6 +8,7 @@ const jobSchema = new mongoose.Schema({
     location: { type: String, required: true },
     salary: { type: Number },
     jobType: { type: String, enum: ['Full-time', 'Part-time', 'Contract'], required: true },
+    joblink:{type:Strings},
     postedBy: { type: String,  default: "Admin" }, // Employer
     createdAt: { type: Date, default: Date.now }
   },{
